@@ -11,11 +11,11 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ICommand ClickCommand { get; }
 
-    private readonly AppDatabase _db;
+    private readonly TrackingService _trackingService;
 
-    public MainWindowViewModel(AppDatabase db)
+    public MainWindowViewModel(TrackingService trackingService)
     {
-        _db = db;
+        _trackingService = trackingService;
 
         ClickCommand = new RelayCommand(OnClick);
     }

@@ -6,6 +6,7 @@ using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using hydration_and_calorie_tracker.Models;
+using hydration_and_calorie_tracker.Models.Repositories;
 using hydration_and_calorie_tracker.ViewModels;
 using hydration_and_calorie_tracker.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +48,11 @@ public partial class App : Application
     private static void ConfigureServices(ServiceCollection services)
     {
         services.AddSingleton(_ => new AppDatabase(AppPaths.DatabasePath));
+
+        services.AddSingleton<ItemRepository>();
+        services.AddSingleton<EntryRepository>();
+        
+        services.AddSingleton<TrackingService>();
 
         services.AddSingleton<MainWindowViewModel>();
     }
