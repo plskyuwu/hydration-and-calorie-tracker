@@ -8,7 +8,7 @@ public class ItemRepository
 {
     private readonly ILiteCollection<Item> _items;
 
-    public ItemRepository(AppDatabase db)
+    public ItemRepository(DatabaseContext db)
     {
         _items = db.Db.GetCollection<Item>("items");
         _items.EnsureIndex(i => i.Name);

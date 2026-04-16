@@ -47,7 +47,7 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection services)
     {
-        services.AddSingleton(_ => new AppDatabase(AppPaths.DatabasePath));
+        services.AddSingleton(_ => new DatabaseContext(AppPaths.DatabasePath));
 
         services.AddSingleton<ItemRepository>();
         services.AddSingleton<EntryRepository>();

@@ -5,11 +5,11 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models;
 
-public class AppDatabase : IDisposable
+public class DatabaseContext : IDisposable
 {
     public LiteDatabase Db { get; }
 
-    public AppDatabase(string path)
+    public DatabaseContext(string path)
     {
         Db = new LiteDatabase(path);
     }

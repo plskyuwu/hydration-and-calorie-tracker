@@ -8,7 +8,7 @@ public class EntryRepository
 {
     private readonly ILiteCollection<Entry> _entries;
 
-    public EntryRepository(AppDatabase db)
+    public EntryRepository(DatabaseContext db)
     {
         _entries = db.Db.GetCollection<Entry>("entries");
         _entries.EnsureIndex(e => e.Timestamp);
