@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
-using hydration_and_calorie_tracker.Models;
+using hydration_and_calorie_tracker.Models.Database;
 
 namespace hydration_and_calorie_tracker.ViewModels;
 

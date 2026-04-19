@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using hydration_and_calorie_tracker.Models.Repositories;
 
-namespace hydration_and_calorie_tracker.Models;
+namespace hydration_and_calorie_tracker.Models.Database;
 
 public class TrackingService(ItemRepository items, EntryRepository entries)
 {

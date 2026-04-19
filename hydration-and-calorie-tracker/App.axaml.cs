@@ -6,7 +6,7 @@ using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using hydration_and_calorie_tracker.Models;
-using hydration_and_calorie_tracker.Models.Repositories;
+using hydration_and_calorie_tracker.Models.Database;
 using hydration_and_calorie_tracker.ViewModels;
 using hydration_and_calorie_tracker.Views;
 using Microsoft.Extensions.DependencyInjection;

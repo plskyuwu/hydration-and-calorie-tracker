@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LiteDB;
 
-namespace hydration_and_calorie_tracker.Models.Repositories;
+namespace hydration_and_calorie_tracker.Models.Database;
 
 public class EntryRepository
 {
