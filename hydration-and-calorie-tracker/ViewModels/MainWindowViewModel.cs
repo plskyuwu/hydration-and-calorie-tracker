@@ -13,6 +13,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private readonly TrackingService _trackingService;
 
+    public MainWindowViewModel() : this(null!)
+    {
+    }
+
     public MainWindowViewModel(TrackingService trackingService)
     {
         _trackingService = trackingService;
