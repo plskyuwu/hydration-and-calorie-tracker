@@ -3,7 +3,7 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <!-- Previewer controls -->
-            <Button Content="Test button"></Button>
+            <Button Content="Test button" />
         </Border>
     </Design.PreviewWith>
 

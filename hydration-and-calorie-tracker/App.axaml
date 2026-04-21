@@ -3,16 +3,16 @@
              x:Class="hydration_and_calorie_tracker.App"
              xmlns:local="using:hydration_and_calorie_tracker"
              RequestedThemeVariant="Dark">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
+
     <Application.Styles>
         <FluentTheme />
-        
+
         <!-- Set properties for all buttons app-wide -->
-        <StyleInclude Source="avares://hydration-and-calorie-tracker/Styles/ButtonStyles.axaml"></StyleInclude>
+        <StyleInclude
+            Source="avares://hydration-and-calorie-tracker/Styles/ButtonStyles.axaml" />
     </Application.Styles>
 </Application>
