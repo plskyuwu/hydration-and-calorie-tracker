@@ -11,5 +11,8 @@
   
     <Application.Styles>
         <FluentTheme />
+        
+        <!-- Set properties for all buttons app-wide -->
+        <StyleInclude Source="avares://hydration-and-calorie-tracker/Styles/ButtonStyles.axaml"></StyleInclude>
     </Application.Styles>
 </Application>
