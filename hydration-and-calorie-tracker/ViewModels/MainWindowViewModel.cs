@@ -9,7 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public string Greeting { get; } = "Welcome to Avalonia!";
 
-    public ICommand ClickCommand { get; }
+    public ICommand AddEntryClickCommand { get; }
 
     private readonly TrackingService _trackingService;
 
@@ -21,11 +21,11 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         _trackingService = trackingService;
 
-        ClickCommand = new RelayCommand(OnClick);
+        AddEntryClickCommand = new RelayCommand(OnClick);
     }
 
     private void OnClick()
     {
-        Console.WriteLine("Button clicked");
+        Console.WriteLine("Add Entry button clicked");
     }
 }

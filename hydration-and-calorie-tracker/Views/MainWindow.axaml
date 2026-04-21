@@ -20,7 +20,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center" />
 
-        <Button Content="Click me" Command="{Binding ClickCommand}"
+        <Button Content="Add entry" Command="{Binding AddEntryClickCommand}"
                 HorizontalAlignment="Center" VerticalAlignment="Center" />
     </DockPanel>
 
