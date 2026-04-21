@@ -16,5 +16,7 @@ public record Item
 
     public int HydrationPerUnit { get; set; }
 
+    public ItemType ItemType { get; set; }
+    
     public UnitType UnitType { get; set; }
 }
