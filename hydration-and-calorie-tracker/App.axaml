@@ -8,6 +8,16 @@
         <local:ViewLocator />
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Include color definitions -->
+                <ResourceInclude
+                    Source="avares://hydration-and-calorie-tracker/Resources/Colors.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
     <Application.Styles>
         <FluentTheme />
 
@@ -15,13 +25,4 @@
         <StyleInclude
             Source="avares://hydration-and-calorie-tracker/Styles/ButtonStyles.axaml" />
     </Application.Styles>
-
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!-- Include color definitions -->
-                <ResourceInclude Source="avares://hydration-and-calorie-tracker/Resources/Colors.axaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
 </Application>
