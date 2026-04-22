@@ -55,3 +55,6 @@ nunit-*.xml
 
 # Rider IDE files
 .idea/
+
+# ReSharper files
+*.DotSettings.user
