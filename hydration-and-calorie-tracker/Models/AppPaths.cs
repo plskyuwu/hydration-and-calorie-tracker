@@ -3,6 +3,9 @@ using System.IO;
 
 namespace hydration_and_calorie_tracker.Models;
 
+/// <summary>
+/// Stores important directory paths
+/// </summary>
 public static class AppPaths
 {
     public static string AppDataPath
