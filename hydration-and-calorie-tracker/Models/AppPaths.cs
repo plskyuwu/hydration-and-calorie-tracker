@@ -13,7 +13,7 @@ public static class AppPaths
                 Environment.GetFolderPath(Environment.SpecialFolder
                     .LocalApplicationData);
 
-            var path = Path.Combine(basePath, "hydration-and-calorie-tracker");
+            var path = Path.Combine(basePath, "plskyuwu.hydration-and-calorie-tracker");
 
             Directory.CreateDirectory(path);
 
