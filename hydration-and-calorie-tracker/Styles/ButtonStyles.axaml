@@ -10,5 +10,11 @@
     <Style Selector="Button">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="Background"
+                Value="{StaticResource SurfaceVariantBrush}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource TextOnSurfaceBrush}" />
+        <Setter Property="CornerRadius" Value="7" />
     </Style>
 </Styles>
