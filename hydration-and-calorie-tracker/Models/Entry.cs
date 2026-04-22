@@ -15,5 +15,5 @@ public record Entry
 
     public int ItemId { get; set; }
 
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 }
