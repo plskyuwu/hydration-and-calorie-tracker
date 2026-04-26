@@ -2,11 +2,14 @@ using System.Collections.Generic;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
-public class TrackingService(ItemRepository items, EntryRepository entries)
+public class TrackingService(
+    IRepository<Item> items,
+    IRepository<Entry> entries)
 {
-    private readonly ItemRepository _items = items;
+    private readonly IRepository<Item> _items = items;
+    private readonly IRepository<Entry> _entries = entries;
 
-    public void AddEntry(Entry entry) => entries.Add(entry);
+    public void AddEntry(Entry entry) => _entries.Add(entry);
 
-    public List<Entry> GetAllEntries() => entries.GetAll();
+    public List<Entry> GetAllEntries() => _entries.GetAll();
 }
