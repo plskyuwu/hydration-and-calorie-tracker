@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using LiteDB;
@@ -25,4 +26,7 @@ public class EntryRepository : IRepository<Entry, int>
     public Entry? GetOne(int id) => _entries.FindById(id);
 
     public List<Entry> GetAll() => _entries.FindAll().ToList();
+
+    public List<Entry> GetByDateRange(DateTime from, DateTime to) => _entries
+        .Find(e => e.Timestamp >= from && e.Timestamp < to).ToList();
 }
