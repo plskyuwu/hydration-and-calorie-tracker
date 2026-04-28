@@ -23,7 +23,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(TrackingService trackingService)
     {
         _trackingService = trackingService;
-        CurrentViewModel = new HomePageViewModel();
+        CurrentViewModel = new HomePageViewModel(_trackingService);
 
         AddEntryClickCommand = new RelayCommand(OnClick);
     }
@@ -38,7 +38,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (CurrentViewModel is HomePageViewModel) return;
 
-        CurrentViewModel = new HomePageViewModel();
+        CurrentViewModel = new HomePageViewModel(_trackingService);
         Console.WriteLine("Switching to Home Page");
     }
 
