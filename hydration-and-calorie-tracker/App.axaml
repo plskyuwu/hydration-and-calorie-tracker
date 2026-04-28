@@ -21,12 +21,12 @@
     <Application.Styles>
         <FluentTheme />
 
-        <!-- Set properties for all buttons app-wide -->
+        <!-- Set properties for components app-wide -->
         <StyleInclude
             Source="avares://hydration-and-calorie-tracker/Styles/ButtonStyles.axaml" />
-
-        <!-- Set properties for all borders app-wide -->
         <StyleInclude
             Source="avares://hydration-and-calorie-tracker/Styles/BorderStyles.axaml" />
+        <StyleInclude
+            Source="avares://hydration-and-calorie-tracker/Styles/TextBlockStyles.axaml" />
     </Application.Styles>
 </Application>
