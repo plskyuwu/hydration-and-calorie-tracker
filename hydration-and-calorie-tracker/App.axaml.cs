@@ -51,6 +51,7 @@ public partial class App : Application
 
         services.AddSingleton<IRepository<Item, int>, ItemRepository>();
         services.AddSingleton<IRepository<Entry, int>, EntryRepository>();
+        services.AddSingleton<IRepository<Setting, string>, SettingRepository>();
 
         services.AddSingleton<TrackingService>();
 
