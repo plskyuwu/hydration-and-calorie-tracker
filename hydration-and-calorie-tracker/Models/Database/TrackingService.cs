@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
@@ -32,7 +34,31 @@ public class TrackingService(
         });
     }
 
+    public decimal TotalHydrationToday => GetTodayEntries()
+        .Select(e => new { Entry = e, Item = _items.GetOne(e.ItemId) })
+        .Where(p => p.Item is not null)
+        .Sum(p => p.Item!.WaterContent * p.Entry.Amount);
+
+    public decimal TotalCaloriesToday => GetTodayEntries()
+        .Select(e => new { Entry = e, Item = _items.GetOne(e.ItemId) })
+        .Where(p => p.Item is not null)
+        .Sum(p => p.Item!.Calories * p.Entry.Amount);
+
     public void AddEntry(Entry entry) => _entries.Add(entry);
+
+    public List<Entry> GetTodayEntries()
+    {
+        var today = DateTime.Today;
+        var tomorrow = today.AddDays(1);
+
+        if (_entries is EntryRepository entryRepository)
+        {
+            return entryRepository.GetByDateRange(today, tomorrow);
+        }
+
+        return _entries.GetAll().Where(e =>
+            e.Timestamp >= today && e.Timestamp < tomorrow).ToList();
+    }
 
     public List<Entry> GetAllEntries() => _entries.GetAll();
 }
