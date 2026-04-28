@@ -51,13 +51,18 @@ public class TrackingService(
         var today = DateTime.Today;
         var tomorrow = today.AddDays(1);
 
+        return GetEntriesByDateRange(today, tomorrow);
+    }
+
+    public List<Entry> GetEntriesByDateRange(DateTime from, DateTime to)
+    {
         if (_entries is EntryRepository entryRepository)
         {
-            return entryRepository.GetByDateRange(today, tomorrow);
+            return entryRepository.GetByDateRange(from, to);
         }
 
-        return _entries.GetAll().Where(e =>
-            e.Timestamp >= today && e.Timestamp < tomorrow).ToList();
+        return GetAllEntries()
+            .Where(e => e.Timestamp >= from && e.Timestamp < to).ToList();
     }
 
     public List<Entry> GetAllEntries() => _entries.GetAll();
