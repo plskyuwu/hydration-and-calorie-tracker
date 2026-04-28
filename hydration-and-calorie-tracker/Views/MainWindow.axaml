@@ -18,7 +18,7 @@
     <DockPanel Background="{StaticResource BackgroundBrush}">
         <!-- Sidebar -->
         <Border DockPanel.Dock="Left"
-                Margin="5">
+                Margin="8">
             <Grid
                 RowDefinitions="*,Auto">
                 <!-- Set properties for all buttons in sidebar -->
@@ -31,24 +31,21 @@
 
                 <StackPanel Grid.Row="0" Width="100"
                             Margin="0, 8, 0, 0">
-                    <Button Content="Home" />
-                    <Button Content="History" />
-                    <Button Content="Items" />
+                    <Button Content="Home"
+                            Command="{Binding NavigateToHomePageCommand}" />
+                    <Button Content="History"
+                            Command="{Binding NavigateToHistoryPageCommand}" />
+                    <Button Content="Items"
+                            Command="{Binding NavigateToItemsPageCommand}" />
                 </StackPanel>
 
-                <Button Grid.Row="1" Content="Settings" />
+                <Button Grid.Row="1" Content="Settings"
+                        Command="{Binding NavigateToSettingsPageCommand}" />
             </Grid>
         </Border>
 
-        <!-- Main content -->
-        <Grid>
-            <TextBlock Text="{Binding Greeting}" DockPanel.Dock="Top"
-                       HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <ContentControl Content="{Binding CurrentViewModel}" Margin="0 8 8 8 " />
 
-            <Button Content="Add entry"
-                    Command="{Binding AddEntryClickCommand}"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </Grid>
     </DockPanel>
 
 </Window>
