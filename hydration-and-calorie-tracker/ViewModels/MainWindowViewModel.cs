@@ -10,8 +10,6 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public string Greeting { get; } = "Welcome to Avalonia!";
 
-    public ICommand AddEntryClickCommand { get; }
-
     private readonly TrackingService _trackingService;
 
     [ObservableProperty] private ViewModelBase _currentViewModel;
@@ -24,13 +22,6 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         _trackingService = trackingService;
         CurrentViewModel = new HomePageViewModel(_trackingService);
-
-        AddEntryClickCommand = new RelayCommand(OnClick);
-    }
-
-    private void OnClick()
-    {
-        Console.WriteLine("Add Entry button clicked");
     }
 
     [RelayCommand]
