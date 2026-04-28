@@ -49,8 +49,8 @@ public partial class App : Application
     {
         services.AddSingleton(_ => new DatabaseContext(AppPaths.DatabasePath));
 
-        services.AddSingleton<IRepository<Item>, ItemRepository>();
-        services.AddSingleton<IRepository<Entry>, EntryRepository>();
+        services.AddSingleton<IRepository<Item, int>, ItemRepository>();
+        services.AddSingleton<IRepository<Entry, int>, EntryRepository>();
 
         services.AddSingleton<TrackingService>();
 

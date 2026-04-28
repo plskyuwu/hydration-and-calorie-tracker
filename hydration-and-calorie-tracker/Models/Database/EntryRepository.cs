@@ -4,7 +4,7 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
-public class EntryRepository : IRepository<Entry>
+public class EntryRepository : IRepository<Entry, int>
 {
     private readonly ILiteCollection<Entry> _entries;
 
@@ -18,7 +18,11 @@ public class EntryRepository : IRepository<Entry>
 
     public bool Delete(int id) => _entries.Delete(id);
 
+    public void Update(Entry entry) => _entries.Upsert(entry);
+
     public int Count() => _entries.Count();
+
+    public Entry? GetOne(int id) => _entries.FindById(id);
 
     public List<Entry> GetAll() => _entries.FindAll().ToList();
 }
