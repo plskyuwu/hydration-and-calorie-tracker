@@ -14,27 +14,8 @@
     <Border>
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" Text="{Binding PageTitle}"
-                       HorizontalAlignment="Center"
+                       FontSize="24" HorizontalAlignment="Center"
                        Margin="0 8 0 0" />
-            <Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Border Grid.Column="0" Margin="8 8 4 8">
-                        <TextBlock Text="Hydration Goal"
-                                   HorizontalAlignment="Center"
-                                   Margin="0 8 0 0" />
-                    </Border>
-                    <Border Grid.Column="1" Margin="4 8 8 8">
-                        <TextBlock Text="Calories Goal"
-                                   HorizontalAlignment="Center"
-                                   Margin="0 8 0 0" />
-                    </Border>
-                </Grid>
-            </Grid>
         </DockPanel>
     </Border>
 
