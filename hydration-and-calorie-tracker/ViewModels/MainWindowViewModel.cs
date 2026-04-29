@@ -30,7 +30,6 @@ public partial class MainWindowViewModel : ViewModelBase
         if (CurrentViewModel is HomePageViewModel) return;
 
         CurrentViewModel = new HomePageViewModel(_trackingService);
-        Console.WriteLine("Switching to Home Page");
     }
 
     [RelayCommand]
@@ -39,7 +38,6 @@ public partial class MainWindowViewModel : ViewModelBase
         if (CurrentViewModel is HistoryPageViewModel) return;
 
         CurrentViewModel = new HistoryPageViewModel();
-        Console.WriteLine("Switching to History Page");
     }
 
     [RelayCommand]
@@ -48,7 +46,6 @@ public partial class MainWindowViewModel : ViewModelBase
         if (CurrentViewModel is ItemsPageViewModel) return;
 
         CurrentViewModel = new ItemsPageViewModel();
-        Console.WriteLine("Switching to Items Page");
     }
 
     [RelayCommand]
@@ -57,6 +54,5 @@ public partial class MainWindowViewModel : ViewModelBase
         if (CurrentViewModel is SettingsPageViewModel) return;
 
         CurrentViewModel = new SettingsPageViewModel();
-        Console.WriteLine("Switching to Settigns Page");
     }
 }
