@@ -13,4 +13,7 @@
 
     <!-- Borders -->
     <SolidColorBrush x:Key="BorderBrush">#5F5F5F</SolidColorBrush>
+    
+    <!-- Accent -->
+    <SolidColorBrush x:Key="AccentBrush">#7F007F</SolidColorBrush>
 </ResourceDictionary>
