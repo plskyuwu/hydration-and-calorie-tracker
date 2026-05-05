@@ -20,7 +20,7 @@
 
     <DockPanel Background="{StaticResource BackgroundBrush}">
         <!-- Sidebar -->
-        <Border DockPanel.Dock="Left"
+        <Border Classes="card" DockPanel.Dock="Left"
                 Margin="8">
             <Grid
                 RowDefinitions="*,Auto">

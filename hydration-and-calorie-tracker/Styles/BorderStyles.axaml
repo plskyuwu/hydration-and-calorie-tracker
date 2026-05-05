@@ -10,7 +10,7 @@
         </Border>
     </Design.PreviewWith>
 
-    <Style Selector="Border">
+    <Style Selector="Border.card">
         <Setter Property="Background" Value="{StaticResource SurfaceBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
