@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="hydration_and_calorie_tracker.App"
              xmlns:local="using:hydration_and_calorie_tracker"
+             xmlns:semi="https://irihi.tech/semi"
              RequestedThemeVariant="Dark">
 
     <Application.DataTemplates>
@@ -19,6 +20,7 @@
     </Application.Resources>
 
     <Application.Styles>
+        <semi:SemiTheme />
         <FluentTheme />
 
         <!-- Set properties for components app-wide -->

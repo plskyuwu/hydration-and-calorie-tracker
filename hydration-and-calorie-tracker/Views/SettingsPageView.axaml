@@ -11,11 +11,20 @@
         <vm:SettingsPageViewModel />
     </Design.DataContext>
 
-    <Border>
+    <Border Classes="card">
         <DockPanel>
-            <TextBlock DockPanel.Dock="Top" Text="{Binding PageTitle}"
-                       FontSize="24" HorizontalAlignment="Center"
-                       Margin="0 8 0 0" />
+
+            <!-- page title -->
+            <Border Classes="card" DockPanel.Dock="Top" Margin="250 8 250 8"
+                    Background="{StaticResource SurfaceVariantBrush}">
+                <TextBlock Text="{Binding PageTitle}"
+                           HorizontalAlignment="Center"
+                           Margin="0 8 0 8" />
+            </Border>
+
+            <!-- page content -->
+            <Grid></Grid>
+
         </DockPanel>
     </Border>
 

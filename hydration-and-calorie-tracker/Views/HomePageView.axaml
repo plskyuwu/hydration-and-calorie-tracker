@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="676" d:DesignHeight="584"
              x:Class="hydration_and_calorie_tracker.Views.HomePageView"
              xmlns:vm="using:hydration_and_calorie_tracker.ViewModels"
              x:DataType="vm:HomePageViewModel">
@@ -11,11 +11,92 @@
         <vm:HomePageViewModel />
     </Design.DataContext>
 
-    <Border>
+    <Border Classes="card">
         <DockPanel>
-            <TextBlock DockPanel.Dock="Top" Text="{Binding PageTitle}"
-                       FontSize="24" HorizontalAlignment="Center"
-                       Margin="0 8 0 0" />
+
+            <!-- page title -->
+            <Border Classes="card" DockPanel.Dock="Top" Margin="250 8 250 8"
+                    Background="{StaticResource SurfaceVariantBrush}">
+                <TextBlock Text="{Binding PageTitle}"
+                           HorizontalAlignment="Center"
+                           Margin="0 8 0 8" />
+            </Border>
+
+            <!-- page content -->
+            <Grid RowDefinitions="4*, *" ColumnDefinitions="*,*">
+                <Grid.Styles>
+                    <Style Selector="ProgressBar">
+                        <Setter Property="BorderThickness" Value="25" />
+                        <Setter Property="Foreground"
+                                Value="{StaticResource AccentBrush}" />
+                        <Setter Property="Width" Value="200" />
+                        <Setter Property="Height" Value="200" />
+                        <Setter Property="Theme"
+                                Value="{DynamicResource ProgressRing}" />
+                        <Setter Property="ShowProgressText" Value="True" />
+                    </Style>
+                </Grid.Styles>
+
+                <!-- hydration goal -->
+                <Grid Grid.Row="0" Grid.Column="0" Margin="8 8 4 8"
+                      RowDefinitions="Auto, Auto, Auto">
+                    <TextBlock Grid.Row="0" Text="{Binding HydrationTitle}"
+                               HorizontalAlignment="Center"
+                               Margin="0 8 0 0" />
+
+                    <ProgressBar Grid.Row="1"
+                                 Value="{Binding TotalHydrationToday}"
+                                 Maximum="{Binding HydrationGoal}"
+                                 Margin="0 16 0 0" />
+
+                    <TextBlock Grid.Row="2"
+                               HorizontalAlignment="Center"
+                               Margin="0 16 0 0">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} / {1} ml">
+                                <Binding Path="TotalHydrationToday" />
+                                <Binding
+                                    Path="HydrationGoal" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                </Grid>
+
+                <!-- calorie goal -->
+                <Grid Grid.Row="0" Grid.Column="1" Margin="4 8 8 8"
+                      RowDefinitions="Auto, Auto, Auto">
+                    <TextBlock Grid.Row="0" Text="{Binding CalorieTitle}"
+                               HorizontalAlignment="Center"
+                               Margin="0 8 0 0" />
+
+                    <ProgressBar Grid.Row="1"
+                                 Value="{Binding TotalCaloriesToday}"
+                                 Maximum="{Binding CalorieGoal}"
+                                 Margin="0 16 0 0 " />
+
+                    <TextBlock Grid.Row="2"
+                               HorizontalAlignment="Center"
+                               Margin="0 16 0 0">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} / {1} kcal">
+                                <Binding Path="TotalCaloriesToday" />
+                                <Binding
+                                    Path="CalorieGoal" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                </Grid>
+
+                <!-- add entry button -->
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center" FontSize="32"
+                        CornerRadius="15" Padding="16 8"
+                        Content="Add Entry"
+                        Command="{Binding AddEntryCommand}" />
+                
+            </Grid>
         </DockPanel>
     </Border>
 
