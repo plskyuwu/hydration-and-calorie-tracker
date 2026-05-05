@@ -66,4 +66,7 @@ public class TrackingService(
     }
 
     public List<Entry> GetAllEntries() => _entries.GetAll();
+
+    public List<Item> GetAllItems() => _items.GetAll();
+    
 }
