@@ -11,4 +11,12 @@
         <Setter Property="Foreground"
                 Value="{StaticResource TextOnSurfaceBrush}" />
     </Style>
+
+    <Style Selector="TextBlock.title">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground"
+                Value="{StaticResource TextOnBackgroundBrush}">
+        </Setter>
+    </Style>
 </Styles>

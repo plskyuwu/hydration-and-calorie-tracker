@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="676" d:DesignHeight="584"
              x:Class="hydration_and_calorie_tracker.Views.HistoryPageView"
              xmlns:vm="using:hydration_and_calorie_tracker.ViewModels"
              x:DataType="vm:HistoryPageViewModel">
@@ -15,9 +15,9 @@
         <DockPanel>
 
             <!-- page title -->
-            <Border Classes="card" DockPanel.Dock="Top" Margin="250 8 250 8"
-                    Background="{StaticResource SurfaceVariantBrush}">
-                <TextBlock Text="{Binding PageTitle}"
+            <Border Classes="title" DockPanel.Dock="Top" Margin="250 8 250 8">
+                <TextBlock Classes="title"
+                           Text="{Binding PageTitle}"
                            HorizontalAlignment="Center"
                            Margin="0 8 0 8" />
             </Border>

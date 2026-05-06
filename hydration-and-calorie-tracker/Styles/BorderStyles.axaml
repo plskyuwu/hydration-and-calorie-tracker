@@ -16,4 +16,11 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="15" />
     </Style>
+    
+    <Style Selector="Border.title">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="15" />
+    </Style>
 </Styles>
