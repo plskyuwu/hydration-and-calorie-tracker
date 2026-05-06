@@ -10,7 +10,7 @@ public class SettingRepository : IRepository<Setting, string>
 
     public SettingRepository(DatabaseContext db)
     {
-        _settings = db.Db.GetCollection<Setting>("settings");
+        _settings = db.Db.GetCollection<Setting>(Collections.Settings);
         _settings.EnsureIndex(s => s.Key);
     }
 

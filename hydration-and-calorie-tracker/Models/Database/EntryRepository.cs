@@ -11,7 +11,7 @@ public class EntryRepository : IRepository<Entry, int>
 
     public EntryRepository(DatabaseContext db)
     {
-        _entries = db.Db.GetCollection<Entry>("entries");
+        _entries = db.Db.GetCollection<Entry>(Collections.Entries);
         _entries.EnsureIndex(e => e.Timestamp);
     }
 

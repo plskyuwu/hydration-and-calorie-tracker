@@ -10,7 +10,7 @@ public class ItemRepository : IRepository<Item, int>
 
     public ItemRepository(DatabaseContext db)
     {
-        _items = db.Db.GetCollection<Item>("items");
+        _items = db.Db.GetCollection<Item>(Collections.Items);
         _items.EnsureIndex(i => i.Name);
     }
 

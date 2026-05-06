@@ -29,7 +29,7 @@ public class DatabaseContext : IDisposable
 
     private void SeedDefaultSettings()
     {
-        var settings = Db.GetCollection<Setting>("settings");
+        var settings = Db.GetCollection<Setting>(Collections.Settings);
         settings.EnsureIndex(s => s.Key);
 
         var defaultSettings = new[]
