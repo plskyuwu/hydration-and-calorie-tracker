@@ -27,8 +27,6 @@
                 <Grid.Styles>
                     <Style Selector="ProgressBar">
                         <Setter Property="BorderThickness" Value="25" />
-                        <Setter Property="Foreground"
-                                Value="{StaticResource AccentBrush}" />
                         <Setter Property="Width" Value="200" />
                         <Setter Property="Height" Value="200" />
                         <Setter Property="Theme"
