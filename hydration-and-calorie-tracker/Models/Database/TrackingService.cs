@@ -10,14 +10,10 @@ public class TrackingService(
     IRepository<Entry, int> entries,
     IRepository<Setting, string> settings)
 {
-    private readonly IRepository<Item, int> _items = items;
-    private readonly IRepository<Entry, int> _entries = entries;
-    private readonly IRepository<Setting, string> _settings = settings;
-
     public decimal HydrationGoal
     {
-        get => decimal.Parse(_settings.GetOne("HydrationGoal")!.Value);
-        set => _settings.Update(new Setting
+        get => decimal.Parse(settings.GetOne("HydrationGoal")!.Value);
+        set => settings.Update(new Setting
         {
             Key = "HydrationGoal",
             Value = value.ToString(CultureInfo.CurrentCulture)
@@ -26,8 +22,8 @@ public class TrackingService(
 
     public decimal CalorieGoal
     {
-        get => decimal.Parse(_settings.GetOne("CalorieGoal")!.Value);
-        set => _settings.Update(new Setting
+        get => decimal.Parse(settings.GetOne("CalorieGoal")!.Value);
+        set => settings.Update(new Setting
         {
             Key = "CalorieGoal",
             Value = value.ToString(CultureInfo.CurrentCulture)
@@ -35,16 +31,16 @@ public class TrackingService(
     }
 
     public decimal TotalHydrationToday => GetTodayEntries()
-        .Select(e => new { Entry = e, Item = _items.GetOne(e.ItemId) })
+        .Select(e => new { Entry = e, Item = items.GetOne(e.ItemId) })
         .Where(p => p.Item is not null)
         .Sum(p => p.Item!.WaterContent * p.Entry.Amount);
 
     public decimal TotalCaloriesToday => GetTodayEntries()
-        .Select(e => new { Entry = e, Item = _items.GetOne(e.ItemId) })
+        .Select(e => new { Entry = e, Item = items.GetOne(e.ItemId) })
         .Where(p => p.Item is not null)
         .Sum(p => p.Item!.Calories * p.Entry.Amount);
 
-    public void AddEntry(Entry entry) => _entries.Add(entry);
+    public void AddEntry(Entry entry) => entries.Add(entry);
 
     public List<Entry> GetTodayEntries()
     {
@@ -56,7 +52,7 @@ public class TrackingService(
 
     public List<Entry> GetEntriesByDateRange(DateTime from, DateTime to)
     {
-        if (_entries is EntryRepository entryRepository)
+        if (entries is EntryRepository entryRepository)
         {
             return entryRepository.GetByDateRange(from, to);
         }
@@ -65,29 +61,29 @@ public class TrackingService(
             .Where(e => e.Timestamp >= from && e.Timestamp < to).ToList();
     }
 
-    public List<Entry> GetAllEntries() => _entries.GetAll();
+    public List<Entry> GetAllEntries() => entries.GetAll();
 
     public List<Item> GetAllDrinks()
     {
-        if (_items is ItemRepository itemRepository)
+        if (items is ItemRepository itemRepository)
         {
             return itemRepository.GetAllDrinks();
         }
 
-        return _items.GetAll().Where(i => i.Category == Category.Drink)
+        return items.GetAll().Where(i => i.Category == Category.Drink)
             .ToList();
     }
 
     public List<Item> GetAllFoods()
     {
-        if (_items is ItemRepository itemRepository)
+        if (items is ItemRepository itemRepository)
         {
             return itemRepository.GetAllFoods();
         }
 
-        return _items.GetAll().Where(i => i.Category == Category.Food)
+        return items.GetAll().Where(i => i.Category == Category.Food)
             .ToList();
     }
 
-    public List<Item> GetAllItems() => _items.GetAll();
+    public List<Item> GetAllItems() => items.GetAll();
 }
