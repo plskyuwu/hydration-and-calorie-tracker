@@ -17,7 +17,7 @@
         <Setter Property="CornerRadius" Value="15" />
     </Style>
     
-    <Style Selector="Border.title">
+    <Style Selector="Border.pageTitle">
         <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
         <Setter Property="BorderThickness" Value="1" />

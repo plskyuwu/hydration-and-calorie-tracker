@@ -14,9 +14,9 @@
     <Border Classes="card">
         <DockPanel>
 
-            <!-- page title -->
-            <Border Classes="title" DockPanel.Dock="Top" Margin="250 8 250 8">
-                <TextBlock Classes="title"
+            <!-- Page title -->
+            <Border Classes="pageTitle" DockPanel.Dock="Top" Margin="250 8 250 8">
+                <TextBlock Classes="pageTitle"
                            Text="{Binding PageTitle}"
                            HorizontalAlignment="Center"
                            Margin="0 8 0 8" />
