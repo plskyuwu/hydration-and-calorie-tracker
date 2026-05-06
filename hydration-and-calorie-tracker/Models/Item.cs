@@ -1,3 +1,4 @@
+using hydration_and_calorie_tracker.Models.Database;
 using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models;
@@ -8,6 +9,9 @@ namespace hydration_and_calorie_tracker.Models;
 public record Item
 {
     [BsonId] public int Id { get; set; }
+
+    public bool IsDefault => Id >= Collections.DefaultItemIdRange.min &&
+                             Id <= Collections.DefaultItemIdRange.max;
 
     public required string Name { get; set; }
 

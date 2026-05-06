@@ -33,22 +33,22 @@ public class DatabaseContext : IDisposable
         var items = Db.GetCollection<Item>(Collections.Items);
         items.EnsureIndex(i => i.Name);
 
-        var defaultDrinks = new[]
+        var defaultItems = new[]
         {
             new Item
             {
+                Id = 1,
                 Name = "Water",
+                Category = Category.Drink,
                 Calories = 0,
                 WaterContent = 100,
                 Unit = Unit.HundredMilliliters
-            }
-        };
-
-        var defaultFoods = new[]
-        {
+            },
             new Item
             {
+                Id = 2,
                 Name = "Rohlík (Czech Bread Roll)",
+                Category = Category.Food,
                 Calories = 120,
                 WaterContent = 0,
                 TotalFats = 1.26m,
@@ -60,23 +60,22 @@ public class DatabaseContext : IDisposable
             }
         };
 
-        foreach (var drink in defaultDrinks)
+        foreach (var item in defaultItems)
         {
-            if (items.Exists(i => i.Name == drink.Name)) break;
-
-            drink.Category = Category.Drink;
-
-            items.Insert(drink);
+            if (!items.Exists(i => i.Id == item.Id)) items.Insert(item);
         }
 
-        foreach (var food in defaultFoods)
-        {
-            if (items.Exists(i => i.Name == food.Name)) break;
+        BumpItemIdSequence(items, Collections.DefaultItemIdRange.max);
+    }
 
-            food.Category = Category.Food;
+    private static void BumpItemIdSequence(ILiteCollection<Item> items,
+        int maxReservedId)
+    {
+        if (items.FindById(maxReservedId) is not null) return;
 
-            items.Insert(food);
-        }
+        var temp = new Item { Id = maxReservedId, Name = "temp" };
+        items.Insert(temp);
+        items.Delete(maxReservedId);
     }
 
     private void SeedDefaultSettings()

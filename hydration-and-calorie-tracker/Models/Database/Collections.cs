@@ -5,4 +5,6 @@ public static class Collections
     public static string Items => "items";
     public static string Entries => "entries";
     public static string Settings => "settings";
+
+    public static (int min, int max) DefaultItemIdRange => (1, 16);
 }
