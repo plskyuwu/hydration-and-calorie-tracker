@@ -67,6 +67,27 @@ public class TrackingService(
 
     public List<Entry> GetAllEntries() => _entries.GetAll();
 
+    public List<Item> GetAllDrinks()
+    {
+        if (_items is ItemRepository itemRepository)
+        {
+            return itemRepository.GetAllDrinks();
+        }
+
+        return _items.GetAll().Where(i => i.Category == Category.Drink)
+            .ToList();
+    }
+
+    public List<Item> GetAllFoods()
+    {
+        if (_items is ItemRepository itemRepository)
+        {
+            return itemRepository.GetAllFoods();
+        }
+
+        return _items.GetAll().Where(i => i.Category == Category.Food)
+            .ToList();
+    }
+
     public List<Item> GetAllItems() => _items.GetAll();
-    
 }
