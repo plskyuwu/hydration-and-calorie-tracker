@@ -18,6 +18,9 @@ public class ItemRepository : IRepository<Item, int>
 
     public bool Delete(int id) => _items.Delete(id);
 
+    public int DeleteAll() =>
+        _items.DeleteMany(i => i.Id > Collections.DefaultItemIdRange.max);
+
     public void Update(Item item) => _items.Upsert(item);
 
     public int Count() => _items.Count();

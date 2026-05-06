@@ -8,6 +8,8 @@ public interface IRepository<T, in TK>
 
     public bool Delete(TK tk);
 
+    public int DeleteAll();
+
     public void Update(T t);
 
     public int Count();

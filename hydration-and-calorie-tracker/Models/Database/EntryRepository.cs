@@ -19,6 +19,8 @@ public class EntryRepository : IRepository<Entry, int>
 
     public bool Delete(int id) => _entries.Delete(id);
 
+    public int DeleteAll() => _entries.DeleteAll();
+
     public void Update(Entry entry) => _entries.Upsert(entry);
 
     public int Count() => _entries.Count();

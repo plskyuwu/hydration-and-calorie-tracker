@@ -18,6 +18,8 @@ public class SettingRepository : IRepository<Setting, string>
 
     public bool Delete(string key) => _settings.DeleteMany(s => s.Key == key) > 0;
 
+    public int DeleteAll() => _settings.DeleteAll();
+
     public void Update(Setting setting) => _settings.Upsert(setting);
 
     public int Count() => _settings.Count();
