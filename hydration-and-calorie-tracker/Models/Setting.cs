@@ -1,3 +1,5 @@
+using LiteDB;
+
 namespace hydration_and_calorie_tracker.Models;
 
 /// <summary>
@@ -5,6 +7,6 @@ namespace hydration_and_calorie_tracker.Models;
 /// </summary>
 public class Setting
 {
-    public required string Key { get; set; }
+    [BsonId] public required string Key { get; set; }
     public required string Value { get; set; }
 }
