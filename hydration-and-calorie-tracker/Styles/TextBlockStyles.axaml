@@ -18,4 +18,8 @@
                 Value="{StaticResource TextOnBackgroundBrush}">
         </Setter>
     </Style>
+
+    <Style Selector="TextBlock.title">
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
 </Styles>
