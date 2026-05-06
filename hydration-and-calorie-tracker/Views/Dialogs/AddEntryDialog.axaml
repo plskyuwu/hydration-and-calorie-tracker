@@ -18,12 +18,18 @@
 
     <Border Classes="card" Margin="8">
         <Grid RowDefinitions="*, Auto" Margin="8">
+
+            <!-- Form -->
             <StackPanel Grid.Row="0" Spacing="16">
+                <StackPanel.Styles>
+                    <Style Selector="TextBlock.title">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Styles>
 
                 <!-- Category -->
                 <TextBlock Classes="title"
-                           Text="Category"
-                           HorizontalAlignment="Center" />
+                           Text="Category" />
                 <StackPanel Orientation="Horizontal" Spacing="24"
                             HorizontalAlignment="Center">
                     <RadioButton Content="Drink"
@@ -34,8 +40,7 @@
 
                 <!-- Item -->
                 <TextBlock Classes="title"
-                           Text="Item"
-                           HorizontalAlignment="Center" />
+                           Text="Item" />
                 <ComboBox ItemsSource="{Binding FilteredItems}"
                           SelectedItem="{Binding SelectedItem}"
                           HorizontalAlignment="Stretch"
@@ -49,8 +54,7 @@
 
                 <!-- Amount -->
                 <TextBlock Classes="title"
-                           Text="Amount"
-                           HorizontalAlignment="Center" />
+                           Text="Amount" />
                 <Grid ColumnDefinitions="*, Auto" HorizontalAlignment="Stretch">
                     <NumericUpDown Grid.Column="0"
                                    Value="{Binding Amount}"
@@ -65,8 +69,7 @@
 
                 <!-- Timestamp -->
                 <TextBlock Classes="title"
-                           Text="Timestamp"
-                           HorizontalAlignment="Center" />
+                           Text="Timestamp" />
                 <StackPanel Spacing="8">
                     <StackPanel Spacing="24" HorizontalAlignment="Center"
                                 Orientation="Horizontal">
