@@ -22,7 +22,7 @@
                            Margin="0 8 0 8" />
             </Border>
 
-            <!-- page content -->
+            <!-- Page content -->
             <Grid></Grid>
 
         </DockPanel>

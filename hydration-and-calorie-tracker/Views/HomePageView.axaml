@@ -22,7 +22,7 @@
                            Margin="0 8 0 8" />
             </Border>
 
-            <!-- page content -->
+            <!-- Page content -->
             <Grid RowDefinitions="4*, *" ColumnDefinitions="*,*">
                 <Grid.Styles>
                     <Style Selector="ProgressBar">
@@ -35,7 +35,7 @@
                     </Style>
                 </Grid.Styles>
 
-                <!-- hydration goal -->
+                <!-- Hydration goal -->
                 <Grid Grid.Row="0" Grid.Column="0" Margin="8 8 4 8"
                       RowDefinitions="Auto, Auto, Auto">
                     <TextBlock Grid.Row="0" Text="{Binding HydrationTitle}"
@@ -61,7 +61,7 @@
 
                 </Grid>
 
-                <!-- calorie goal -->
+                <!-- Calorie goal -->
                 <Grid Grid.Row="0" Grid.Column="1" Margin="4 8 8 8"
                       RowDefinitions="Auto, Auto, Auto">
                     <TextBlock Grid.Row="0" Text="{Binding CalorieTitle}"
@@ -87,7 +87,7 @@
 
                 </Grid>
 
-                <!-- add entry button -->
+                <!-- Add entry button -->
                 <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalAlignment="Center" FontSize="32"
                         CornerRadius="15" Padding="16 8"
