@@ -53,7 +53,7 @@ public class DatabaseContext : IDisposable
                 WaterContent = 0,
                 TotalFats = 1.26m,
                 SaturatedFats = 0.25m,
-                Fibers = 0.84m,
+                Fiber = 0.84m,
                 TotalCarbohydrates = 23.1m,
                 Sugar = 0.42m,
                 Unit = Unit.Pieces

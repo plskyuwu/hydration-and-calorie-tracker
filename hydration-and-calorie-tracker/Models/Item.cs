@@ -23,7 +23,7 @@ public record Item
 
     public decimal SaturatedFats { get; set; }
 
-    public decimal Fibers { get; set; }
+    public decimal Fiber { get; set; }
 
     public decimal TotalCarbohydrates { get; set; }
 
