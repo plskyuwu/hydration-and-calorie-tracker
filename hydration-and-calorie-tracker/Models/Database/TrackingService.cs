@@ -33,12 +33,20 @@ public class TrackingService(
     public decimal TotalHydrationToday => GetTodayEntries()
         .Select(e => new { Entry = e, Item = items.GetOne(e.ItemId) })
         .Where(p => p.Item is not null)
-        .Sum(p => p.Item!.WaterContent * p.Entry.Amount);
+        .Sum(p => p.Item!.WaterContent * p.Entry.Amount /
+                  (p.Item!.Unit == Unit.HundredMilliliters ||
+                   p.Item!.Unit == Unit.HundredMilliliters
+                      ? 100
+                      : 1));
 
     public decimal TotalCaloriesToday => GetTodayEntries()
         .Select(e => new { Entry = e, Item = items.GetOne(e.ItemId) })
         .Where(p => p.Item is not null)
-        .Sum(p => p.Item!.Calories * p.Entry.Amount);
+        .Sum(p => p.Item!.Calories * p.Entry.Amount /
+                  (p.Item!.Unit == Unit.HundredMilliliters ||
+                   p.Item!.Unit == Unit.HundredMilliliters
+                      ? 100
+                      : 1));
 
     public void AddEntry(Entry entry) => entries.Add(entry);
 
