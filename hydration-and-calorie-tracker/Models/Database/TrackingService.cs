@@ -50,6 +50,10 @@ public class TrackingService(
 
     public void AddEntry(Entry entry) => entries.Add(entry);
 
+    public int DeleteAllEntries() => entries.DeleteAll();
+
+    public int DeleteAllItems() => items.DeleteAll();
+
     public List<Entry> GetTodayEntries()
     {
         var today = DateTime.Today;
