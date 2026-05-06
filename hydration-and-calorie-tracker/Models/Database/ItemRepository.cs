@@ -25,4 +25,10 @@ public class ItemRepository : IRepository<Item, int>
     public Item? GetOne(int id) => _items.FindById(id);
 
     public List<Item> GetAll() => _items.FindAll().ToList();
+
+    public List<Item> GetAllDrinks() =>
+        _items.Find(i => i.Category == Category.Drink).ToList();
+
+    public List<Item> GetAllFoods() =>
+        _items.Find(i => i.Category == Category.Food).ToList();
 }
