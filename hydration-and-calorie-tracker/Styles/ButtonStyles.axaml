@@ -3,7 +3,10 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <!-- Previewer controls -->
-            <Button Content="Test button" />
+            <StackPanel Spacing="16">
+                <Button Content="Test button" />
+                <Button Classes="delete" Content="Test button" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -16,5 +19,14 @@
         <Setter Property="Foreground"
                 Value="{StaticResource TextOnSurfaceBrush}" />
         <Setter Property="CornerRadius" Value="7" />
+    </Style>
+
+    <Style Selector="Button.delete">
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="BorderBrush" Value="IndianRed" />
+    </Style>
+
+    <Style Selector="Button.delete:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="DarkRed" />
     </Style>
 </Styles>
