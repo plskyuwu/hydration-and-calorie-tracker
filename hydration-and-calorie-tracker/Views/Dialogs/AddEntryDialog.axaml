@@ -1,0 +1,108 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:hydration_and_calorie_tracker.ViewModels.Dialogs"
+        mc:Ignorable="d" d:DesignWidth="400"
+        x:Class="hydration_and_calorie_tracker.Views.Dialogs.AddEntryDialog"
+        x:DataType="vm:AddEntryDialogViewModel"
+        Title="Add Entry"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Width="400"
+        SizeToContent="Height">
+
+    <Design.DataContext>
+        <vm:AddEntryDialogViewModel />
+    </Design.DataContext>
+
+    <Border Classes="card" Margin="8">
+        <Grid RowDefinitions="*, Auto" Margin="8">
+            <StackPanel Grid.Row="0" Spacing="16">
+
+                <!-- Category -->
+                <TextBlock Classes="title"
+                           Text="Category"
+                           HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Spacing="24"
+                            HorizontalAlignment="Center">
+                    <RadioButton Content="Drink"
+                                 IsChecked="{Binding IsDrinkSelected, Mode=TwoWay}" />
+                    <RadioButton Content="Food"
+                                 IsChecked="{Binding IsFoodSelected, Mode=TwoWay}" />
+                </StackPanel>
+
+                <!-- Item -->
+                <TextBlock Classes="title"
+                           Text="Item"
+                           HorizontalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding FilteredItems}"
+                          SelectedItem="{Binding SelectedItem}"
+                          HorizontalAlignment="Stretch"
+                          PlaceholderForeground="{StaticResource TextMutedBrush}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!-- Amount -->
+                <TextBlock Classes="title"
+                           Text="Amount"
+                           HorizontalAlignment="Center" />
+                <Grid ColumnDefinitions="*, Auto" HorizontalAlignment="Stretch">
+                    <NumericUpDown Grid.Column="0"
+                                   Value="{Binding Amount}"
+                                   Minimum="0.01"
+                                   Increment="10"
+                                   FormatString="0.##"
+                                   HorizontalAlignment="Stretch" />
+                    <TextBlock Grid.Column="1" Text="{Binding Unit}"
+                               HorizontalAlignment="Center"
+                               Margin="8 0 0 0" />
+                </Grid>
+
+                <!-- Timestamp -->
+                <TextBlock Classes="title"
+                           Text="Timestamp"
+                           HorizontalAlignment="Center" />
+                <StackPanel Spacing="8">
+                    <StackPanel Spacing="24" HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                        <RadioButton Content="Use current time"
+                                     IsChecked="{Binding UseCurrentTime, Mode=TwoWay}" />
+                        <RadioButton Content="Custom date and time"
+                                     IsChecked="{Binding IsPickingTime, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Spacing="8"
+                                IsVisible="{Binding IsPickingTime}"
+                                IsEnabled="{Binding IsPickingTime}">
+                        <CalendarDatePicker SelectedDate="{Binding PickedDate}"
+                                            HorizontalAlignment="Stretch"
+                                            IsTodayHighlighted="True" />
+                        <TimePicker SelectedTime="{Binding PickedTime}"
+                                    HorizontalAlignment="Stretch" />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="8"
+                        Margin="0 24 0 0">
+                <Button Content="Cancel"
+                        Command="{Binding CancelCommand}"
+                        CommandParameter="{Binding $parent[Window]}" />
+                <Button Content="Add entry"
+                        Command="{Binding ConfirmCommand}"
+                        CommandParameter="{Binding $parent[Window]}" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>

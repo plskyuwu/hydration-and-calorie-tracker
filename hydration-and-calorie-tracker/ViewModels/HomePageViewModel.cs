@@ -1,17 +1,22 @@
 using System;
 using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using hydration_and_calorie_tracker.Models;
 using hydration_and_calorie_tracker.Models.Database;
+using hydration_and_calorie_tracker.ViewModels.Dialogs;
+using hydration_and_calorie_tracker.Views.Dialogs;
 
 namespace hydration_and_calorie_tracker.ViewModels;
 
 public partial class HomePageViewModel : ViewModelBase
 {
     public string PageTitle { get; } = "Home";
-    
+
     public string HydrationTitle { get; } = "Hydration";
-    
+
     public string CalorieTitle { get; } = "Calories";
 
     [ObservableProperty] private TrackingService _trackingService;
@@ -47,7 +52,7 @@ public partial class HomePageViewModel : ViewModelBase
     /// </summary>
     public void RefreshProperties()
     {
-        TotalHydrationToday = 1000;
+        TotalHydrationToday = TrackingService.TotalHydrationToday;
         TotalCaloriesToday = TrackingService.TotalCaloriesToday;
 
         HydrationGoal = TrackingService.HydrationGoal;
@@ -57,7 +62,18 @@ public partial class HomePageViewModel : ViewModelBase
     [RelayCommand]
     private async Task AddEntry()
     {
-        Console.WriteLine("Add Entry");
+        var viewModel = new AddEntryDialogViewModel(TrackingService);
+        var dialog = new AddEntryDialog { DataContext = viewModel };
+
+        var mainWindow =
+            (Application.Current!.ApplicationLifetime as
+                IClassicDesktopStyleApplicationLifetime)!.MainWindow!;
+        var entry = await dialog.ShowDialog<Entry?>(mainWindow);
+
+        if (entry is null) return;
+
+        TrackingService.AddEntry(entry);
+
         RefreshProperties();
     }
 }
