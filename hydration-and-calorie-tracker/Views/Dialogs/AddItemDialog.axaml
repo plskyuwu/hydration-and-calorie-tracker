@@ -1,0 +1,145 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:hydration_and_calorie_tracker.ViewModels.Dialogs"
+        mc:Ignorable="d" d:DesignWidth="400"
+        x:Class="hydration_and_calorie_tracker.Views.Dialogs.AddItemDialog"
+        x:DataType="vm:AddItemDialogViewModel"
+        Title="Add Item"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Width="400"
+        SizeToContent="Height">
+
+    <Design.DataContext>
+        <vm:AddItemDialogViewModel />
+    </Design.DataContext>
+
+    <Border Classes="card" Margin="8">
+        <Grid RowDefinitions="*, Auto" Margin="8">
+
+            <!-- Form -->
+            <Grid Grid.Row="0"
+                  RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                  ColumnDefinitions="*, *"
+                  RowSpacing="8"
+                  ColumnSpacing="16">
+                <Grid.Styles>
+                    <Style Selector="TextBlock.title">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="8" />
+                    </Style>
+                    <Style Selector="NumericUpDown">
+                        <Setter Property="Minimum" Value="0" />
+                        <Setter Property="FormatString" Value="0.##" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    </Style>
+                </Grid.Styles>
+
+                <!-- Name -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TextBlock Classes="title" Text="Name" />
+                    <TextBox Text="{Binding Name}" />
+                </StackPanel>
+
+                <!-- Category -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TextBlock Classes="title" Text="Category" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Spacing="24">
+                        <RadioButton Content="Drink"
+                                     IsChecked="{Binding IsDrinkSelected}" />
+                        <RadioButton Content="Food"
+                                     IsChecked="{Binding IsFoodSelected}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Water content -->
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Classes="title" Text="Water content" />
+                    <NumericUpDown Value="{Binding WaterContent}" />
+                </StackPanel>
+
+                <!-- Calories -->
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Classes="title" Text="Calories" />
+                    <NumericUpDown Value="{Binding Calories}" />
+                </StackPanel>
+
+                <!-- Total fats -->
+                <StackPanel Grid.Row="3" Grid.Column="0">
+                    <TextBlock Classes="title" Text="Total fats" />
+                    <NumericUpDown Value="{Binding TotalFats}" />
+                </StackPanel>
+
+                <!-- Saturated fats -->
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Classes="title" Text="Saturated fats" />
+                    <NumericUpDown Value="{Binding SaturatedFats}" />
+                </StackPanel>
+
+                <!-- Total carbohydrates -->
+                <StackPanel Grid.Row="4" Grid.Column="0">
+                    <TextBlock Classes="title" Text="Total carbs" />
+                    <NumericUpDown Value="{Binding TotalCarbohydrates}" />
+                </StackPanel>
+
+                <!-- Sugars -->
+                <StackPanel Grid.Row="4" Grid.Column="1">
+                    <TextBlock Classes="title" Text="Sugar" />
+                    <NumericUpDown Value="{Binding Sugar}" />
+                </StackPanel>
+
+                <!-- Fiber -->
+                <StackPanel Grid.Row="5" Grid.Column="0">
+                    <TextBlock Classes="title" Text="Fiber" />
+                    <NumericUpDown Value="{Binding Fiber}" />
+                </StackPanel>
+
+                <!-- Protein -->
+                <StackPanel Grid.Row="5" Grid.Column="1">
+                    <TextBlock Classes="title" Text="Protein" />
+                    <NumericUpDown Value="{Binding Protein}" />
+                </StackPanel>
+
+                <!-- Salt -->
+                <StackPanel Grid.Row="6" Grid.Column="0">
+                    <TextBlock Classes="title" Text="Salt" />
+                    <NumericUpDown Value="{Binding Salt}" />
+                </StackPanel>
+
+                <!-- Unit -->
+                <StackPanel Grid.Row="6" Grid.Column="1">
+                    <TextBlock Classes="title" Text="Unit" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Spacing="16">
+                        <RadioButton Content="ml"
+                                     IsChecked="{Binding IsMillilitersSelected}" />
+                        <RadioButton Content="g"
+                                     IsChecked="{Binding IsGramsSelected}" />
+                        <RadioButton Content="pcs"
+                                     IsChecked="{Binding IsPiecesSelected}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Spacing="8"
+                            Margin="0 8 0 0">
+                    <Button Content="Cancel"
+                            Command="{Binding CancelCommand}"
+                            CommandParameter="{Binding $parent[Window]}" />
+                    <Button Content="Add Item"
+                            Command="{Binding ConfirmCommand}"
+                            CommandParameter="{Binding $parent[Window]}" />
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
