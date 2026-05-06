@@ -24,6 +24,11 @@ public class DatabaseContext : IDisposable
 
     private void SeedDefaults()
     {
+        SeedDefaultSettings();
+    }
+
+    private void SeedDefaultSettings()
+    {
         var settings = Db.GetCollection<Setting>("settings");
         settings.EnsureIndex(s => s.Key);
 
