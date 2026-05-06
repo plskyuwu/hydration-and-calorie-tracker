@@ -30,5 +30,7 @@
             Source="avares://hydration-and-calorie-tracker/Styles/BorderStyles.axaml" />
         <StyleInclude
             Source="avares://hydration-and-calorie-tracker/Styles/TextBlockStyles.axaml" />
+        <StyleInclude
+            Source="avares://hydration-and-calorie-tracker/Styles/NumericUpDownStyles.axaml" />
     </Application.Styles>
 </Application>
