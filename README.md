@@ -11,10 +11,10 @@ goals, and review their progress over time.
 
 ## Features
 
-- [ ] Hydration tracking
-- [ ] Calorie tracking
+- [X] Hydration tracking
+- [X] Calorie tracking
 - [ ] Daily hydration and calorie goals
-- [ ] Automatic calorie calculation from drinks
+- [X] Automatic calorie calculation from drinks
 - [ ] Custom drinks and foods
 - [ ] Entry history
 - [ ] Graph-based statistics and visualization
