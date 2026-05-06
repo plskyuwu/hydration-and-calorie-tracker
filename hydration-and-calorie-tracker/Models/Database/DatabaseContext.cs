@@ -24,7 +24,59 @@ public class DatabaseContext : IDisposable
 
     private void SeedDefaults()
     {
+        SeedDefaultItems();
         SeedDefaultSettings();
+    }
+
+    private void SeedDefaultItems()
+    {
+        var items = Db.GetCollection<Item>(Collections.Items);
+        items.EnsureIndex(i => i.Name);
+
+        var defaultDrinks = new[]
+        {
+            new Item
+            {
+                Name = "Water",
+                Calories = 0,
+                WaterContent = 100,
+                Unit = Unit.HundredMilliliters
+            }
+        };
+
+        var defaultFoods = new[]
+        {
+            new Item
+            {
+                Name = "Rohlík (Czech Bread Roll)",
+                Calories = 120,
+                WaterContent = 0,
+                TotalFats = 1.26m,
+                SaturatedFats = 0.25m,
+                Fibers = 0.84m,
+                TotalCarbohydrates = 23.1m,
+                Sugar = 0.42m,
+                Unit = Unit.Pieces
+            }
+        };
+
+        foreach (var drink in defaultDrinks)
+        {
+            if (items.Exists(i => i.Name == drink.Name)) break;
+
+            drink.Category = Category.Drink;
+
+            items.Insert(drink);
+        }
+
+        foreach (var food in defaultFoods)
+        {
+            if (items.Exists(i => i.Name == food.Name)) break;
+
+            food.Category = Category.Food;
+
+            items.Insert(food);
+        }
     }
 
     private void SeedDefaultSettings()

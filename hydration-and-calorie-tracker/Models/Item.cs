@@ -19,6 +19,8 @@ public record Item
 
     public decimal SaturatedFats { get; set; }
 
+    public decimal Fibers { get; set; }
+
     public decimal TotalCarbohydrates { get; set; }
 
     public decimal Sugar { get; set; }
