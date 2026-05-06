@@ -53,6 +53,6 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (CurrentViewModel is SettingsPageViewModel) return;
 
-        CurrentViewModel = new SettingsPageViewModel();
+        CurrentViewModel = new SettingsPageViewModel(_trackingService);
     }
 }
