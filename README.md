@@ -13,7 +13,7 @@ goals, and review their progress over time.
 
 - [X] Hydration tracking
 - [X] Calorie tracking
-- [ ] Daily hydration and calorie goals
+- [X] Daily hydration and calorie goals
 - [X] Automatic calorie calculation from drinks
 - [ ] Custom drinks and foods
 - [ ] Entry history
