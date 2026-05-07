@@ -93,6 +93,8 @@ public class TrackingService(
 
     public List<Entry> GetAllEntries() => entries.GetAll();
 
+    public Item? GetItem(int id) => items.GetOne(id);
+    
     public List<Item> GetAllDrinks()
     {
         if (items is ItemRepository itemRepository)
