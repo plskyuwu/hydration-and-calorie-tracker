@@ -37,7 +37,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (CurrentViewModel is HistoryPageViewModel) return;
 
-        CurrentViewModel = new HistoryPageViewModel();
+        CurrentViewModel = new HistoryPageViewModel(_trackingService);
     }
 
     [RelayCommand]

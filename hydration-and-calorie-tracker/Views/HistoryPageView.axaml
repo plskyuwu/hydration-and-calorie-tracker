@@ -2,9 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:hydration_and_calorie_tracker.ViewModels"
+             xmlns:models="using:hydration_and_calorie_tracker.Models"
              mc:Ignorable="d" d:DesignWidth="676" d:DesignHeight="584"
              x:Class="hydration_and_calorie_tracker.Views.HistoryPageView"
-             xmlns:vm="using:hydration_and_calorie_tracker.ViewModels"
              x:DataType="vm:HistoryPageViewModel">
 
     <Design.DataContext>
@@ -14,18 +15,65 @@
     <Border Classes="card">
         <DockPanel>
 
-            <!-- page title -->
-            <Border Classes="pageTitle" DockPanel.Dock="Top" Margin="250 8 250 8">
+            <!-- Page title -->
+            <Border Classes="pageTitle" DockPanel.Dock="Top"
+                    Margin="250 8 250 8">
                 <TextBlock Classes="pageTitle"
                            Text="{Binding PageTitle}"
                            HorizontalAlignment="Center"
                            Margin="0 8 0 8" />
             </Border>
 
-            <!-- page content -->
-            <Grid></Grid>
+            <!-- Right sidebar -->
+            <!-- <Grid DockPanel.Dock="Right" RowDefinitions="*, Auto" Width="200" -->
+                  <!-- Margin="8 0"> -->
 
+                <!-- Graph -->
+                <!-- <StackPanel Grid.Row="0"></StackPanel> -->
+
+                <!-- Options -->
+                <StackPanel Grid.Row="1" 
+                            DockPanel.Dock="Bottom"
+                            HorizontalAlignment="Center"
+                            Margin="0 8" 
+                            Spacing="16"
+                            Orientation="Horizontal">
+                    <TextBlock Text="Show:" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding ShowOptions}"
+                              SelectedItem="{Binding Show}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center" />
+                </StackPanel>
+
+            <!-- </Grid> -->
+
+
+            <!-- Entries list -->
+            <ListBox ItemsSource="{Binding Entries}"
+                     SelectedItem="{Binding SelectedEntry}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="models:EntryRow">
+                        <Grid ColumnDefinitions="*, Auto, Auto, Auto"
+                              Margin="4">
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding ItemName}"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Entry.Amount}"
+                                       VerticalAlignment="Center"
+                                       Margin="8 0" />
+                            <TextBlock Grid.Column="2"
+                                       Text="{Binding Entry.Timestamp}"
+                                       Margin="8 0" />
+                            <Button Grid.Column="3"
+                                    Content="Details"
+                                    Command="{Binding $parent[UserControl].((vm:HistoryPageViewModel)DataContext).OpenEntryDetailsCommand}"
+                                    CommandParameter="{Binding }" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </DockPanel>
     </Border>
-
 </UserControl>
