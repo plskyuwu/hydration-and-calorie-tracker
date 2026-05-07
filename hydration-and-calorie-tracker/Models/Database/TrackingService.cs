@@ -79,6 +79,18 @@ public class TrackingService(
             .Where(e => e.Timestamp >= from && e.Timestamp < to).ToList();
     }
 
+    public List<Entry> GetAllDrinkEntries()
+    {
+        var drinkIds = GetAllDrinks().Select(i => i.Id).ToHashSet();
+        return GetAllEntries().Where(e => drinkIds.Contains(e.ItemId)).ToList();
+    }
+
+    public List<Entry> GetAllFoodEntries()
+    {
+        var foodIds = GetAllItems().Select(i => i.Id).ToHashSet();
+        return GetAllEntries().Where(e => foodIds.Contains(e.ItemId)).ToList();
+    }
+
     public List<Entry> GetAllEntries() => entries.GetAll();
 
     public List<Item> GetAllDrinks()
