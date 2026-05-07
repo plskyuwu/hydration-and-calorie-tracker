@@ -60,6 +60,11 @@ public class TrackingService(
 
     public int DeleteAllItems() => items.DeleteAll();
 
+    public int DeleteAllData()
+    {
+        return DeleteAllEntries() + DeleteAllItems();
+    }
+
     public List<Entry> GetTodayEntries()
     {
         var today = DateTime.Today;
@@ -87,14 +92,14 @@ public class TrackingService(
 
     public List<Entry> GetAllFoodEntries()
     {
-        var foodIds = GetAllItems().Select(i => i.Id).ToHashSet();
+        var foodIds = GetAllFoods().Select(i => i.Id).ToHashSet();
         return GetAllEntries().Where(e => foodIds.Contains(e.ItemId)).ToList();
     }
 
     public List<Entry> GetAllEntries() => entries.GetAll();
 
     public Item? GetItem(int id) => items.GetOne(id);
-    
+
     public List<Item> GetAllDrinks()
     {
         if (items is ItemRepository itemRepository)

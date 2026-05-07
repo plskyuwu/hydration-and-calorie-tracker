@@ -73,6 +73,9 @@
                     <Button Classes="delete" Content="Delete all custom items"
                             HorizontalAlignment="Stretch"
                             Command="{Binding DeleteAllCustomItemsCommand}" />
+                    <Button Classes="delete" Content="Delete all data"
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding DeleteAllDataCommand}" />
                 </StackPanel>
 
             </Grid>

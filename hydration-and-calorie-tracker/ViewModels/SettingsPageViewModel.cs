@@ -75,6 +75,20 @@ public partial class SettingsPageViewModel : ViewModelBase
         }
     }
 
+    [RelayCommand]
+    private async Task DeleteAllData()
+    {
+        var box = CreateWarningDialog(
+            "Are you sure you want to delete all data?\n\nThis action cannot be undone.");
+
+        var result = await box.ShowAsync();
+
+        if (result == "Yes")
+        {
+            _trackingService.DeleteAllData();
+        }
+    }
+
     private static IMsBox<string> CreateWarningDialog(string contentMessage)
     {
         return MessageBoxManager.GetMessageBoxCustom(
