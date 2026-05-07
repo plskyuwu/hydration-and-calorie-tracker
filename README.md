@@ -16,7 +16,7 @@ goals, and review their progress over time.
 - [X] Daily hydration and calorie goals
 - [X] Automatic calorie calculation from drinks
 - [X] Custom drinks and foods
-- [ ] Entry history
+- [X] Entry history
 - [ ] Graph-based statistics and visualization
 
 ## Technologies Used
