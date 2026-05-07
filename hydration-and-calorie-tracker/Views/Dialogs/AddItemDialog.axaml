@@ -40,7 +40,7 @@
                 <!-- Name -->
                 <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                     <TextBlock Classes="title" Text="Name" />
-                    <TextBox Text="{Binding Name}" />
+                    <TextBox Text="{Binding Name}" Height="32"/>
                 </StackPanel>
 
                 <!-- Category -->
