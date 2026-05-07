@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="676" d:DesignHeight="584"
              x:Class="hydration_and_calorie_tracker.Views.ItemsPageView"
              xmlns:vm="using:hydration_and_calorie_tracker.ViewModels"
+             xmlns:models="using:hydration_and_calorie_tracker.Models"
              x:DataType="vm:ItemsPageViewModel">
 
     <Design.DataContext>
@@ -15,17 +16,63 @@
         <DockPanel>
 
             <!-- Page title -->
-            <Border Classes="pageTitle" DockPanel.Dock="Top" Margin="250 8 250 8">
+            <Border Classes="pageTitle" DockPanel.Dock="Top"
+                    Margin="250 8 250 8">
                 <TextBlock Classes="pageTitle"
                            Text="{Binding PageTitle}"
                            HorizontalAlignment="Center"
                            Margin="0 8 0 8" />
             </Border>
 
-            <!-- Page content -->
-            <Grid></Grid>
+            <!-- Bottom bar -->
+            <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*, Auto"
+                  Margin="0 8 8 8">
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Spacing="8"
+                            Margin="8 0">
+                    <TextBlock Text="Sort by"
+                               VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding SortOptions}"
+                              SelectedItem="{Binding SortBy}" />
+                </StackPanel>
+                <Button Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        FontSize="32"
+                        CornerRadius="15"
+                        Padding="16 8"
+                        Content="Add Item"
+                        Command="{Binding AddItemCommand}" />
+            </Grid>
+
+            <!-- Items list -->
+            <ListBox ItemsSource="{Binding Items}"
+                     SelectedItem="{Binding SelectedItem}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="models:Item">
+                        <Grid ColumnDefinitions="*, Auto, Auto, Auto"
+                              Margin="4">
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Name}"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Calories, StringFormat={}{0} kcal}"
+                                       VerticalAlignment="Center"
+                                       Margin="8 0" />
+                            <TextBlock Grid.Column="2"
+                                       Text="{Binding Category}"
+                                       VerticalAlignment="Center"
+                                       Margin="8 0" />
+                            <Button Grid.Column="3"
+                                    Content="Details"
+                                    Command="{Binding $parent[UserControl].((vm:ItemsPageViewModel)DataContext).OpenItemDetailsCommand}"
+                                    CommandParameter="{Binding}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
         </DockPanel>
     </Border>
-
 </UserControl>

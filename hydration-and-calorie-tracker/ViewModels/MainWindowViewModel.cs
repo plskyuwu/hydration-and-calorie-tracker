@@ -45,7 +45,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (CurrentViewModel is ItemsPageViewModel) return;
 
-        CurrentViewModel = new ItemsPageViewModel();
+        CurrentViewModel = new ItemsPageViewModel(_trackingService);
     }
 
     [RelayCommand]
