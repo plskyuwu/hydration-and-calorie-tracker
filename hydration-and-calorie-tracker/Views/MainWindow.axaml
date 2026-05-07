@@ -9,8 +9,8 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Hydration and calorie tracker"
         CanResize="False"
-        Width="800"
-        Height="600">
+        Width="1000"
+        Height="700">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
