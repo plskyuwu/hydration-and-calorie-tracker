@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:hydration_and_calorie_tracker.ViewModels.Dialogs"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="hydration_and_calorie_tracker.Views.Dialogs.EntryDetailsDialog"
+        x:DataType="vm:EntryDetailsDialogViewModel"
+        Title="Entry Details"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight">
+
+
+    <Design.DataContext>
+        <vm:EntryDetailsDialogViewModel />
+    </Design.DataContext>
+
+    <Border Classes="card" Margin="8">
+        <Grid Margin="8"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+              ColumnDefinitions="Auto"
+              RowSpacing="8"
+              ColumnSpacing="16">
+            <Grid.Styles>
+                <Style Selector="TextBlock.label">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Margin" Value="0 0 0 2" />
+                </Style>
+                <Style Selector="TextBlock.value">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+                <Style Selector="StackPanel">
+                    <Setter Property="Margin" Value="4 8" />
+                    <Setter Property="Spacing" Value="8" />
+                </Style>
+            </Grid.Styles>
+
+            <!-- Item name -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Classes="label" Text="Item name" />
+                <TextBlock Classes="value" Text="{Binding ItemName}" />
+                <Button Content="Details"
+                        Command="{Binding OpenItemDetailsCommand}"
+                        CommandParameter="{Binding ItemId}"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Id -->
+            <StackPanel Grid.Row="1">
+                <TextBlock Classes="label" Text="Id" />
+                <TextBlock Classes="value" Text="{Binding Id}" />
+            </StackPanel>
+
+            <!-- Amount -->
+            <StackPanel Grid.Row="2">
+                <TextBlock Classes="label" Text="Amount" />
+                <TextBlock Classes="value" Text="{Binding Amount}" />
+            </StackPanel>
+
+            <!-- Timestamp -->
+            <StackPanel Grid.Row="3">
+                <TextBlock Classes="label" Text="Timestamp" />
+                <TextBlock Classes="value" Text="{Binding Timestamp}" />
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="4"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="8"
+                        Margin="0 8 0 0">
+                <Button Classes="delete"
+                        Content="Delete"
+                        Command="{Binding DeleteCommand}"
+                        CommandParameter="{Binding $parent[Window]}" />
+                <Button Content="Close"
+                        Command="{Binding CloseCommand}"
+                        CommandParameter="{Binding $parent[Window]}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
