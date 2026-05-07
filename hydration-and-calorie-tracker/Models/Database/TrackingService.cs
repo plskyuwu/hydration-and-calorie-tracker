@@ -50,6 +50,12 @@ public class TrackingService(
 
     public void AddEntry(Entry entry) => entries.Add(entry);
 
+    public void AddItem(Item item) => items.Add(item);
+
+    public bool DeleteEntry(int id) => entries.Delete(id);
+
+    public bool DeleteItem(int id) => items.Delete(id);
+
     public int DeleteAllEntries() => entries.DeleteAll();
 
     public int DeleteAllItems() => items.DeleteAll();
