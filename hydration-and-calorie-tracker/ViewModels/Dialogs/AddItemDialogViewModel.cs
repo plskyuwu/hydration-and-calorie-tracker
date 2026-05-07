@@ -59,7 +59,7 @@ public partial class AddItemDialogViewModel : ViewModelBase
             Salt = Salt ?? 0,
             Unit = unit
         };
-        
+
         dialog.Close(item);
     }
 
