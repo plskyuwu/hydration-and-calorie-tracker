@@ -3,13 +3,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:hydration_and_calorie_tracker.ViewModels.Dialogs"
-        mc:Ignorable="d" d:DesignWidth="400"
+        mc:Ignorable="d" d:DesignWidth="425"
         x:Class="hydration_and_calorie_tracker.Views.Dialogs.AddItemDialog"
         x:DataType="vm:AddItemDialogViewModel"
         Title="Add Item"
         CanResize="False"
         WindowStartupLocation="CenterOwner"
-        Width="400"
+        Width="425"
         SizeToContent="Height">
 
     <Design.DataContext>
@@ -39,8 +39,8 @@
 
                 <!-- Name -->
                 <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                    <TextBlock Classes="title" Text="Name" />
-                    <TextBox Text="{Binding Name}" Height="32"/>
+                    <TextBlock Classes="title" Text="Name*" />
+                    <TextBox Text="{Binding Name}" Height="32" />
                 </StackPanel>
 
                 <!-- Category -->
@@ -58,13 +58,13 @@
 
                 <!-- Water content -->
                 <StackPanel Grid.Row="2" Grid.Column="0">
-                    <TextBlock Classes="title" Text="Water content" />
+                    <TextBlock Classes="title" Text="Water content*" />
                     <NumericUpDown Value="{Binding WaterContent}" />
                 </StackPanel>
 
                 <!-- Calories -->
                 <StackPanel Grid.Row="2" Grid.Column="1">
-                    <TextBlock Classes="title" Text="Calories" />
+                    <TextBlock Classes="title" Text="Calories*" />
                     <NumericUpDown Value="{Binding Calories}" />
                 </StackPanel>
 
@@ -125,8 +125,15 @@
                     </StackPanel>
                 </StackPanel>
 
+                <!-- Required fields text -->
+                <TextBlock Grid.Row="7" Grid.Column="0"
+                           Text="*required fields"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+
                 <!-- Buttons -->
-                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                <StackPanel Grid.Row="7" Grid.Column="1"
                             Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             Spacing="8"

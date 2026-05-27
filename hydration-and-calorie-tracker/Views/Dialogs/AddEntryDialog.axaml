@@ -54,7 +54,7 @@
 
                 <!-- Amount -->
                 <TextBlock Classes="title"
-                           Text="Amount" />
+                           Text="Amount*" />
                 <Grid ColumnDefinitions="*, Auto" HorizontalAlignment="Stretch">
                     <NumericUpDown Grid.Column="0"
                                    Value="{Binding Amount}"
@@ -89,8 +89,15 @@
                                     HorizontalAlignment="Stretch" />
                     </StackPanel>
                 </StackPanel>
-
             </StackPanel>
+
+            <!-- Required field text -->
+            <TextBlock Grid.Row="1"
+                       Margin="48 0 0 0"
+                       Text="*required field"
+                       FontSize="16"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left" />
 
             <!-- Buttons -->
             <StackPanel Grid.Row="1"
