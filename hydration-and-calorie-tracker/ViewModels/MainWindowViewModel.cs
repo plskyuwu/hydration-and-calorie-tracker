@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using hydration_and_calorie_tracker.Models.Database;
 
