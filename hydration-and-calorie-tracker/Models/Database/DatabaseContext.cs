@@ -6,6 +6,9 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// Handles the database connection.
+/// </summary>
 public class DatabaseContext : IDisposable
 {
     public LiteDatabase Db { get; }

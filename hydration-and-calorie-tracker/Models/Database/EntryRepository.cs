@@ -5,6 +5,9 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// Implementation of IRepository for the Entry entity
+/// </summary>
 public class EntryRepository : IRepository<Entry, int>
 {
     private readonly ILiteCollection<Entry> _entries;

@@ -2,6 +2,11 @@ using System.Collections.Generic;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// A common interface for database repositories.
+/// </summary>
+/// <typeparam name="T">the type stored inside the repository</typeparam>
+/// <typeparam name="TK">the type's key/id type</typeparam>
 public interface IRepository<T, in TK>
 {
     public void Add(T t);

@@ -5,6 +5,12 @@ using System.Linq;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// Provides a united and simplified access to data in multiple repositories
+/// </summary>
+/// <param name="items">item repository</param>
+/// <param name="entries">entry repository</param>
+/// <param name="settings">setting repository</param>
 public class TrackingService(
     IRepository<Item, int> items,
     IRepository<Entry, int> entries,

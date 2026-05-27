@@ -4,6 +4,9 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// Implementation of IRepository for the Setting entity
+/// </summary>
 public class SettingRepository : IRepository<Setting, string>
 {
     private readonly ILiteCollection<Setting> _settings;

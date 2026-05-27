@@ -4,6 +4,9 @@ using LiteDB;
 
 namespace hydration_and_calorie_tracker.Models.Database;
 
+/// <summary>
+/// Implementation of IRepository for the Item entity
+/// </summary>
 public class ItemRepository : IRepository<Item, int>
 {
     private readonly ILiteCollection<Item> _items;
