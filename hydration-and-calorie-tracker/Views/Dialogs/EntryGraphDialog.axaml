@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:hydration_and_calorie_tracker.ViewModels.Dialogs"
+        xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="800"
+        x:Class="hydration_and_calorie_tracker.Views.Dialogs.EntryGraphDialog"
+        x:DataType="vm:EntryGraphDialogViewModel"
+        Title="Entries graph"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight">
+
+
+    <Design.DataContext>
+        <vm:EntryDetailsDialogViewModel />
+    </Design.DataContext>
+
+    <Border Classes="card" Margin="8">
+        <StackPanel>
+            <lvc:PieChart Series="{Binding Series}"
+                          Height="400"
+                          Width="400"
+                          LegendPosition="Bottom" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                        Spacing="8" Margin="8 8">
+                <TextBlock Text="From" VerticalAlignment="Center" />
+                <CalendarDatePicker
+                    Width="210"
+                    Height="40"
+                    FontSize="24"
+                    SelectedDate="{Binding From}" />
+                <TextBlock Text="To" VerticalAlignment="Center" />
+                <CalendarDatePicker
+                    Width="210"
+                    Height="40"
+                    FontSize="24"
+                    SelectedDate="{Binding To}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Metric: " FontSize="24"
+                           VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding MetricOptions}"
+                          SelectedItem="{Binding Metric}"
+                          VerticalAlignment="Center"
+                          Margin="0 8" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

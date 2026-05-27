@@ -79,4 +79,17 @@ public partial class HistoryPageViewModel : ViewModelBase
 
         RefreshEntries();
     }
+
+    [RelayCommand]
+    private async Task ShowEntryGraph()
+    {
+        var viewModel = new EntryGraphDialogViewModel(_trackingService, Show);
+        var dialog = new EntryGraphDialog { DataContext = viewModel };
+
+        var mainWindow =
+            (Application.Current!.ApplicationLifetime as
+                IClassicDesktopStyleApplicationLifetime)!.MainWindow!;
+
+        await dialog.ShowDialog(mainWindow);
+    }
 }

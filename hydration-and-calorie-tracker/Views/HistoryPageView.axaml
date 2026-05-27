@@ -24,20 +24,12 @@
                            Margin="0 8 0 8" />
             </Border>
 
-            <!-- Right sidebar -->
-            <!-- <Grid DockPanel.Dock="Right" RowDefinitions="*, Auto" Width="200" -->
-                  <!-- Margin="8 0"> -->
-
-                <!-- Graph -->
-                <!-- <StackPanel Grid.Row="0"></StackPanel> -->
-
-                <!-- Options -->
-                <StackPanel Grid.Row="1" 
-                            DockPanel.Dock="Bottom"
-                            HorizontalAlignment="Center"
-                            Margin="0 8" 
-                            Spacing="16"
-                            Orientation="Horizontal">
+            <!-- Bottom bar -->
+            <Grid DockPanel.Dock="Bottom"
+                  ColumnDefinitions="*, Auto"
+                  Margin="8 8">
+                <StackPanel Grid.Column="0" Orientation="Horizontal"
+                            Spacing="16">
                     <TextBlock Text="Show:" HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
                     <ComboBox ItemsSource="{Binding ShowOptions}"
@@ -45,9 +37,14 @@
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center" />
                 </StackPanel>
-
-            <!-- </Grid> -->
-
+                <Button Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        FontSize="19"
+                        CornerRadius="7"
+                        Padding="16 8"
+                        Content="View graph"
+                        Command="{Binding ShowEntryGraphCommand}" />
+            </Grid>
 
             <!-- Entries list -->
             <ListBox ItemsSource="{Binding Entries}"
