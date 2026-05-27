@@ -8,6 +8,7 @@ namespace hydration_and_calorie_tracker.Models;
 /// </summary>
 public record Entry
 {
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     [BsonId] public int Id { get; set; }
 
     public DateTime Timestamp { get; set; }
