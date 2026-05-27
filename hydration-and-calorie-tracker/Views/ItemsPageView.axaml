@@ -40,7 +40,7 @@
                 <Button Grid.Column="1"
                         HorizontalAlignment="Right"
                         FontSize="32"
-                        CornerRadius="15"
+                        CornerRadius="7"
                         Padding="16 8"
                         Content="Add Item"
                         Command="{Binding AddItemCommand}" />
