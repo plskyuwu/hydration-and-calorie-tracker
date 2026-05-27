@@ -11,13 +11,13 @@ goals, and review their progress over time.
 
 ## Features
 
-- [X] Hydration tracking
-- [X] Calorie tracking
-- [X] Daily hydration and calorie goals
-- [X] Automatic calorie calculation from drinks
-- [X] Custom drinks and foods
-- [X] Entry history
-- [ ] Graph-based statistics and visualization
+- Hydration tracking
+- Calorie tracking
+- Daily hydration and calorie goals
+- Automatic calorie calculation from drinks
+- Custom drinks and foods
+- Entry history
+- Graph-based statistics and visualization
 
 ## Technologies Used
 
@@ -28,4 +28,4 @@ goals, and review their progress over time.
 
 ## Status
 
-This project is currently in development.
+This project is currently not in development, since it's pretty much finished.
