@@ -21,10 +21,13 @@ goals, and review their progress over time.
 
 ## Technologies Used
 
-- C#
-- .NET
+- [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
+- [.NET](https://github.com/dotnet/dotnet)
 - [Avalonia UI](https://github.com/AvaloniaUI/Avalonia)
 - [LiteDB](https://github.com/litedb-org/LiteDB)
+- [MessageBox](https://github.com/AvaloniaCommunity/MessageBox.Avalonia)
+- [SkiaSharp](https://github.com/mono/SkiaSharp)
+- [LiveCharts](https://github.com/Live-Charts/LiveCharts2)
 
 ## Status
 
