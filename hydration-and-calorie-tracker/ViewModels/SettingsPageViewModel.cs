@@ -1,12 +1,8 @@
 using System.Threading.Tasks;
-using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using hydration_and_calorie_tracker.Helpers;
 using hydration_and_calorie_tracker.Models.Database;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Base;
-using MsBox.Avalonia.Dto;
-using MsBox.Avalonia.Models;
 
 namespace hydration_and_calorie_tracker.ViewModels;
 
@@ -48,62 +44,60 @@ public partial class SettingsPageViewModel : ViewModelBase
     }
 
     [RelayCommand]
+    private async Task DeleteAllBrokenEntries()
+    {
+        var result = await DialogHelper.ShowWarningDialog(
+            "Are you sure you want to delete all broken entries?\n\nThis action cannot be undone.");
+
+        if (result != DialogOption.Yes) return;
+
+        var count = _trackingService.DeleteAllBrokenEntries();
+
+        await DialogHelper.ShowInfoDialog($"Deleted {count} entries.");
+    }
+
+    [RelayCommand]
     private async Task DeleteAllEntries()
     {
-        var box = CreateWarningDialog(
+        var result = await DialogHelper.ShowWarningDialog(
             "Are you sure you want to delete all entries?\n\nThis action cannot be undone.");
 
-        var result = await box.ShowAsync();
+        if (result != DialogOption.Yes) return;
 
-        if (result == "Yes")
-        {
-            _trackingService.DeleteAllEntries();
-        }
+        var count = _trackingService.DeleteAllEntries();
+
+        await DialogHelper.ShowInfoDialog($"Deleted {count} entries.");
     }
 
     [RelayCommand]
     private async Task DeleteAllCustomItems()
     {
-        var box = CreateWarningDialog(
+        var result = await DialogHelper.ShowWarningDialog(
             "Are you sure you want to delete all custom items?\n\nThis action cannot be undone.");
 
-        var result = await box.ShowAsync();
+        if (result != DialogOption.Yes) return;
 
-        if (result == "Yes")
-        {
-            _trackingService.DeleteAllItems();
-        }
+        var deleteEntries = await DialogHelper.ShowWarningDialog(
+            "Do you also want to delete all broken entries?\n\nThis action cannot be undone.");
+
+        var count =
+            _trackingService.DeleteAllItems(deleteEntries == DialogOption.Yes);
+
+        await DialogHelper.ShowInfoDialog(
+            $"Deleted {count.items} items and {count.entries} entries.");
     }
 
     [RelayCommand]
     private async Task DeleteAllData()
     {
-        var box = CreateWarningDialog(
+        var result = await DialogHelper.ShowWarningDialog(
             "Are you sure you want to delete all data?\n\nThis action cannot be undone.");
 
-        var result = await box.ShowAsync();
+        if (result != DialogOption.Yes) return;
 
-        if (result == "Yes")
-        {
-            _trackingService.DeleteAllData();
-        }
-    }
+        var count = _trackingService.DeleteAllData();
 
-    private static IMsBox<string> CreateWarningDialog(string contentMessage)
-    {
-        return MessageBoxManager.GetMessageBoxCustom(
-            new MessageBoxCustomParams
-            {
-                ContentTitle = "Warning",
-                ContentMessage = contentMessage,
-                ButtonDefinitions =
-                [
-                    new ButtonDefinition { Name = "Yes", IsDefault = false },
-                    new ButtonDefinition { Name = "No", IsDefault = true }
-                ],
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                MinHeight = 100,
-                MinWidth = 400
-            });
+        await DialogHelper.ShowInfoDialog(
+            $"Deleted {count.items} items and {count.entries} entries.");
     }
 }
