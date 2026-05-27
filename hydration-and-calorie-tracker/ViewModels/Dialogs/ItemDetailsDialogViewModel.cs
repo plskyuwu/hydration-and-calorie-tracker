@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
+using hydration_and_calorie_tracker.Helpers;
 using hydration_and_calorie_tracker.Models;
 
 namespace hydration_and_calorie_tracker.ViewModels.Dialogs;

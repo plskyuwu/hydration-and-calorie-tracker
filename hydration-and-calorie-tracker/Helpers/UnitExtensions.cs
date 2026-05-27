@@ -1,6 +1,7 @@
 using System;
+using hydration_and_calorie_tracker.Models;
 
-namespace hydration_and_calorie_tracker.Models;
+namespace hydration_and_calorie_tracker.Helpers;
 
 public static class UnitExtensions
 {

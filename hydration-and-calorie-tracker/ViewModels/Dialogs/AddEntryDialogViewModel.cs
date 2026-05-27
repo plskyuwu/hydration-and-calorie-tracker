@@ -4,6 +4,7 @@ using System.Linq;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using hydration_and_calorie_tracker.Helpers;
 using hydration_and_calorie_tracker.Models;
 using hydration_and_calorie_tracker.Models.Database;
 
@@ -79,7 +80,7 @@ public partial class AddEntryDialogViewModel : ViewModelBase
         SelectedItem = FilteredItems.FirstOrDefault();
 
         Unit = SelectedItem is not null
-            ? SelectedItem.Unit.ToDisplayString()
+            ? UnitExtensions.ToDisplayString(SelectedItem.Unit)
             : "";
     }
 
