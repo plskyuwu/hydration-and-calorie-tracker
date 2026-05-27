@@ -67,6 +67,9 @@
                 <StackPanel Grid.Row="2" HorizontalAlignment="Center"
                             Margin="0 16">
                     <TextBlock Classes="title" Text="Danger zone" />
+                    <Button Classes="delete" Content="Delete broken entries"
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding DeleteAllBrokenEntriesCommand}" />
                     <Button Classes="delete" Content="Delete all entries"
                             HorizontalAlignment="Stretch"
                             Command="{Binding DeleteAllEntriesCommand}" />
