@@ -5,6 +5,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using hydration_and_calorie_tracker.Helpers;
 using hydration_and_calorie_tracker.Models;
 using hydration_and_calorie_tracker.Models.Database;
 using hydration_and_calorie_tracker.ViewModels.Dialogs;
@@ -91,7 +92,22 @@ public partial class ItemsPageViewModel : ViewModelBase
 
         if (!delete) return;
 
-        _trackingService.DeleteItem(item.Id);
+        var result = await DialogHelper.ShowWarningDialog(
+            $"Are you sure you want to delete {item.Name}?\n\nThis action cannot be undone.");
+
+        if (result != DialogOption.Yes) return;
+
+        var deleteEntries = await DialogHelper.ShowWarningDialog(
+            $"Do you also want to delete all entries that were using {item.Name}?\n\nThis action cannot be undone.");
+
+        var count =
+            _trackingService.DeleteItem(item.Id, deleteEntries == DialogOption.Yes);
+
+        if (!count.deleted)
+            await DialogHelper.ShowErrorDialog($"Failed to delete {item.Name}.");
+
+        await DialogHelper.ShowInfoDialog(
+            $"Deleted {item.Name} and {count.entries} entries.");
 
         RefreshItems();
     }
